@@ -1,0 +1,1 @@
+python tf-mapper.py | sort | ./tf-reducer.py > tf-output.txt

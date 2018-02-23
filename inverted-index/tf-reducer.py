@@ -10,3 +10,17 @@
 from sys import stdin
 import re
  
+prev_t = None
+P = []
+
+for line in stdin:
+    line = line.strip()
+    t, id, tf = line.split()
+
+    if t != prev_t and prev_t is not None:
+        print("{}\t{}".format(prev_t, P))
+        P = []
+    P.append((id, tf))
+    prev_t = t
+
+print("{}\t{}".format(t, P))

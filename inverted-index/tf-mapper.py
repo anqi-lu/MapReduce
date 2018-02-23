@@ -7,15 +7,23 @@
 
 """Mapper function for building inverted index"""
 
-from sys import stdin
+import sys
 import re
 import glob
 
 
 def mapper(id, content):
     H = {}
-    re.findall(r'\w+', content)
-    
+    # words = re.findall(r'\w+', content)
+    pattern = re.compile("[a-zA-Z][a-zA-Z0-9]*")
+
+    for word in pattern.findall(content):
+        H[word.lower()] = H.get(word.lower(), 0) + 1
+    for k, v in H.iteritems():
+        
+        print("{} {}\t{}".format(k, id, v))
+  
+       
 
 if __name__ == "__main__":
     base_path = 'docs/'
